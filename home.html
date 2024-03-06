@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment_5(to-do list)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="todo">To - Do List</h1>
+
+    <div>
+        <button id="addbtn">Add</button>
+        <button id="clearbtn">Clear</button>
+        <button id="sortbtn">Sort</button>
+    </div>
+
+    <div class="display">
+        <input type="text" id="newItem" placeholder="Enter item">
+        <button onclick="addItem()">Add Item</button>
+    </div>
+
+    <ul id="todolist"></ul>
+
+    <script>
+        
+        let todoItems = [];
+    
+        function addItem() {
+            let newItemInput = document.getElementById("newItem");
+            let newItemValue = newItemInput.value.trim();
+            
+            if (newItemValue !== "") {
+                todoItems.push(newItemValue);
+                displayItems();
+                newItemInput.value = "";
+            }
+        }
+    
+        function displayItems() {
+            let todolist = document.getElementById("todolist");
+            todolist.innerHTML = ""; 
+    
+            todoItems.forEach(function(item) {
+                let li = document.createElement("li");
+                li.textContent = item;
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.onclick = function() {
+                    deleteItem(item);
+                };
+                li.appendChild(deleteButton);
+                todolist.appendChild(li);
+            });
+        }
+    
+        function deleteItem(item) {
+            let index = todoItems.indexOf(item);
+            if (index !== -1) {
+                todoItems.splice(index, 1);
+                displayItems();
+            }
+        }
+    
+        function clearItems() {
+            todoItems = [];
+            displayItems();
+        }
+    
+        function sortItems() {
+            todoItems.sort();
+            displayItems();
+        }
+    
+        document.getElementById("addbtn").addEventListener("click", addItem);
+        document.getElementById("clearbtn").addEventListener("click", clearItems);
+        document.getElementById("sortbtn").addEventListener("click", sortItems);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+.todo{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: bold;
+}
+
+.addbtn{
+   margin-left: 15px;
+   margin-right:10px;
+}
+
+.clearbtn{
+    margin-left: 15px;
+    margin-right:10px;
+}
+
+.sortbtn{
+    margin-left: 15px;
+    margin-right:10px;
+}
+
+.display{
+    margin-left: 7px;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+.todolist{
+    list-style-type: none;
+    padding: 1px;
+}
+
+.li{
+    margin: 5px;
+}
+
